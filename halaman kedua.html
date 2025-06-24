@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday! 🎉</title>
+    <link rel="stylesheet" href="style halaman kedua.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Confetti Container -->
+    <div class="confetti-container" id="confetti"></div>
+    
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Birthday Header -->
+        <div class="birthday-header">
+            <h1 class="birthday-title">Happy Birthday!</h1>
+            <div class="birthday-subtitle">Wishing you a day filled with joy and laughter</div>
+        </div>
+
+        <!-- Birthday Message -->
+        <div class="birthday-message">
+            <div class="message-card">
+                <h2 class="message-title">🎂 Another Year, Another Adventure! 🎂</h2>
+                <p class="message-text">
+                    Today is your special day! May your birthday be filled with 
+                    wonderful surprises, beautiful moments, and all the happiness 
+                    your heart can hold. Here's to another amazing year ahead!
+                </p>
+                <div class="birthday-wishes">
+                    <div class="wish">✨ Joy</div>
+                    <div class="wish">🎁 Love</div>
+                    <div class="wish">🌟 Success</div>
+                    <div class="wish">💖 Happiness</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Video Animation Container -->
+        <div class="video-animation-container" id="videoContainer">
+            <video id="birthdayVideo" autoplay controls playsinline preload="auto">
+                <source src="Video ceweku.mp4" type="video/mp4">
+                <source src="" type="video/webm">
+                <source src="" type="video/ogg">
+                Your browser does not support the video tag.
+            </video>
+            <div class="video-overlay">
+                <div class="video-title">🎉 Happy Birthday! 🎉</div>
+            </div>
+        </div>
+
+        <!-- Photo Album Container -->
+        <div class="photo-album-container" id="photoAlbum">
+            <div class="album-header">
+                <h2 class="album-title">📸 Our Beautiful Memories 📸</h2>
+                <p class="album-subtitle">Every moment with you is a treasure</p>
+            </div>
+            
+            <div class="photo-gallery">
+                <div class="photo-slide active" data-slide="1">
+                    <img src="ceweku 2.jpg" alt="Birthday Memory 1" class="album-photo">
+                    <div class="photo-caption">
+                        <h3>💖 Special Moments</h3>
+                        <p>Every day with you is a new adventure filled with love and laughter.</p>
+                    </div>
+                </div>
+                
+                <div class="photo-slide" data-slide="2">
+                    <img src="ceweku 3.jpg" alt="Birthday Memory 2" class="album-photo">
+                    <div class="photo-caption">
+                        <h3>🌟 Beautiful Memories</h3>
+                        <p>Your smile lights up every room and makes every moment magical.</p>
+                    </div>
+                </div>
+                
+                <div class="photo-slide" data-slide="3">
+                    <img src="ceweku 4.jpg" alt="Birthday Memory 3" class="album-photo">
+                    <div class="photo-caption">
+                        <h3>🎂 Happy Birthday!</h3>
+                        <p>May this year bring you all the joy, love, and happiness you deserve.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="album-navigation">
+                <button class="nav-btn prev-btn" id="prevBtn">❮</button>
+                <div class="slide-indicators" id="slideIndicators">
+                    <span class="indicator active" data-slide="1"></span>
+                    <span class="indicator" data-slide="2"></span>
+                    <span class="indicator" data-slide="3"></span>
+                </div>
+                <button class="nav-btn next-btn" id="nextBtn">❯</button>
+            </div>
+            
+            <div class="birthday-message-final">
+                <div class="final-message">
+                    <h2>🎉 Happy Birthday, Beautiful! 🎉</h2>
+                    <p>Thank you for being the amazing person you are. Your kindness, love, and beautiful spirit make the world a better place. Here's to another wonderful year ahead!</p>
+                    <div class="message-signature">
+                        <p>With all my love,</p>
+                        <p class="signature-name">Your Special Someone</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Birthday Icons -->
+        <div class="birthday-icons">
+            <div class="icon">🎈</div>
+            <div class="icon">🎊</div>
+            <div class="icon">🎉</div>
+            <div class="icon">🎁</div>
+            <div class="icon">🍰</div>
+            <div class="icon">🎂</div>
+        </div>
+
+        <!-- Interactive Button -->
+        <div class="interactive-section">
+            <button class="birthday-btn" id="birthdayBtn">
+                <span class="btn-text">Make a Wish! 🌟</span>
+                <div class="btn-sparkles"></div>
+            </button>
+        </div>
+
+        <!-- Floating Balloons -->
+        <div class="balloons">
+            <div class="balloon balloon-1">🎈</div>
+            <div class="balloon balloon-2">🎈</div>
+            <div class="balloon balloon-3">🎈</div>
+            <div class="balloon balloon-4">🎈</div>
+            <div class="balloon balloon-5">🎈</div>
+        </div>
+    </div>
+
+    <!-- Audio for background music (optional) -->
+    <audio id="birthdayMusic" loop>
+        <source src="" type="audio/mpeg">
+    </audio>
+
+    <script>
+        // Confetti Animation
+        function createConfetti() {
+            const confettiContainer = document.getElementById('confetti');
+            const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#96ceb4', '#feca57', '#ff9ff3'];
+            
+            for (let i = 0; i < 150; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * 100 + '%';
+                confetti.style.animationDelay = Math.random() * 3 + 's';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                confettiContainer.appendChild(confetti);
+            }
+        }
+
+        // Birthday Button Interaction
+        document.getElementById('birthdayBtn').addEventListener('click', function() {
+            this.classList.add('clicked');
+            
+            // Create extra confetti on button click
+            const confettiContainer = document.getElementById('confetti');
+            const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#96ceb4', '#feca57', '#ff9ff3'];
+            
+            for (let i = 0; i < 50; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti extra';
+                confetti.style.left = Math.random() * 100 + '%';
+                confetti.style.animationDelay = '0s';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.animationDuration = (Math.random() * 2 + 1) + 's';
+                confettiContainer.appendChild(confetti);
+                
+                // Remove extra confetti after animation
+                setTimeout(() => {
+                    confetti.remove();
+                }, 3000);
+            }
+            
+            setTimeout(() => {
+                this.classList.remove('clicked');
+            }, 1000);
+        });
+
+        // Initialize confetti on page load
+        window.addEventListener('load', function() {
+            createConfetti();
+            
+            // Add entrance animation to main elements
+            const elements = document.querySelectorAll('.birthday-header, .birthday-message, .birthday-icons, .interactive-section');
+            elements.forEach((element, index) => {
+                element.style.animationDelay = (index * 0.3) + 's';
+                element.classList.add('fade-in');
+            });
+        });
+
+        // Add floating effect to balloons
+        function animateBalloons() {
+            const balloons = document.querySelectorAll('.balloon');
+            balloons.forEach((balloon, index) => {
+                balloon.style.animationDelay = (index * 0.5) + 's';
+            });
+        }
+
+        animateBalloons();
+
+        // Video Animation Transition
+        const birthdayMessage = document.querySelector('.birthday-message');
+        const videoContainer = document.getElementById('videoContainer');
+        const birthdayVideo = document.getElementById('birthdayVideo');
+        const photoAlbum = document.getElementById('photoAlbum');
+
+        // Photo album navigation
+        let currentSlide = 1;
+        const totalSlides = 3;
+
+        function showSlide(slideNumber) {
+            // Hide all slides
+            document.querySelectorAll('.photo-slide').forEach(slide => {
+                slide.classList.remove('active');
+            });
+            
+            // Remove active from all indicators
+            document.querySelectorAll('.indicator').forEach(indicator => {
+                indicator.classList.remove('active');
+            });
+            
+            // Show current slide
+            document.querySelector(`[data-slide="${slideNumber}"]`).classList.add('active');
+            document.querySelector(`.indicator[data-slide="${slideNumber}"]`).classList.add('active');
+            
+            currentSlide = slideNumber;
+        }
+
+        // Navigation buttons
+        document.getElementById('nextBtn').addEventListener('click', () => {
+            const nextSlide = currentSlide === totalSlides ? 1 : currentSlide + 1;
+            showSlide(nextSlide);
+        });
+
+        document.getElementById('prevBtn').addEventListener('click', () => {
+            const prevSlide = currentSlide === 1 ? totalSlides : currentSlide - 1;
+            showSlide(prevSlide);
+        });
+
+        // Indicator clicks
+        document.querySelectorAll('.indicator').forEach(indicator => {
+            indicator.addEventListener('click', () => {
+                const slideNumber = parseInt(indicator.getAttribute('data-slide'));
+                showSlide(slideNumber);
+            });
+        });
+
+        // Auto-advance slides every 5 seconds
+        let slideInterval;
+        function startSlideShow() {
+            slideInterval = setInterval(() => {
+                const nextSlide = currentSlide === totalSlides ? 1 : currentSlide + 1;
+                showSlide(nextSlide);
+            }, 5000);
+        }
+
+        // Detect when video ends
+        birthdayVideo.addEventListener('ended', function() {
+            // Hide video container
+            videoContainer.style.transition = 'all 1.2s cubic-bezier(0.4, 0, 0.2, 1)';
+            videoContainer.style.opacity = '0';
+            videoContainer.style.transform = 'translateY(-50px) scale(0.95)';
+            
+            setTimeout(() => {
+                videoContainer.style.display = 'none';
+                
+                // Show photo album with smooth animation
+                photoAlbum.style.display = 'block';
+                photoAlbum.style.opacity = '0';
+                photoAlbum.style.transform = 'translateY(50px) scale(0.9)';
+                photoAlbum.style.transition = 'all 1.5s cubic-bezier(0.34, 1.56, 0.64, 1)';
+                
+                setTimeout(() => {
+                    photoAlbum.style.opacity = '1';
+                    photoAlbum.style.transform = 'translateY(0) scale(1)';
+                    
+                    // Start slideshow
+                    startSlideShow();
+                }, 100);
+            }, 1200);
+        });
+
+        // Fallback: Check video progress every second
+        setInterval(() => {
+            if (birthdayVideo.duration > 0 && birthdayVideo.currentTime >= birthdayVideo.duration - 0.5) {
+                // Video is near the end, trigger photo album
+                if (videoContainer.style.display !== 'none') {
+                    console.log('Video near end - showing photo album');
+                    birthdayVideo.dispatchEvent(new Event('ended'));
+                }
+            }
+        }, 1000);
+
+        // Show video animation after 15 seconds
+        setTimeout(() => {
+            // Hide birthday message with enhanced fade out
+            birthdayMessage.style.transition = 'all 1.2s cubic-bezier(0.4, 0, 0.2, 1)';
+            birthdayMessage.style.opacity = '0';
+            birthdayMessage.style.transform = 'translateY(-50px) scale(0.95)';
+            
+            // Show video container with enhanced fade in
+            setTimeout(() => {
+                birthdayMessage.style.display = 'none';
+                
+                // Prepare video container for smooth entry
+                videoContainer.style.display = 'block';
+                videoContainer.style.opacity = '0';
+                videoContainer.style.transform = 'translateY(50px) scale(0.8) rotateY(-10deg)';
+                videoContainer.style.transition = 'all 1.5s cubic-bezier(0.34, 1.56, 0.64, 1)';
+                
+                // Trigger smooth video entry animation
+                setTimeout(() => {
+                    videoContainer.style.opacity = '1';
+                    videoContainer.style.transform = 'translateY(0) scale(1) rotateY(0deg)';
+                }, 50);
+                
+                // Play video with slight delay for smooth transition
+                setTimeout(() => {
+                    birthdayVideo.play().catch(function(error) {
+                        console.log("Video autoplay failed:", error);
+                    });
+                }, 300);
+
+                // Additional autoplay attempts
+                setTimeout(() => {
+                    birthdayVideo.play().catch(function(error) {
+                        console.log("Second autoplay attempt failed:", error);
+                    });
+                }, 1000);
+
+                // Ensure video is loaded and ready
+                birthdayVideo.addEventListener('loadeddata', function() {
+                    birthdayVideo.play().catch(function(error) {
+                        console.log("Video play after load failed:", error);
+                    });
+                });
+
+                // Remove video title overlay after 6 seconds with enhanced animation
+                const videoOverlay = document.querySelector('.video-overlay');
+                setTimeout(() => {
+                    videoOverlay.style.transition = 'all 1s cubic-bezier(0.4, 0, 0.2, 1)';
+                    videoOverlay.style.opacity = '0';
+                    videoOverlay.style.transform = 'translateY(-30px) scale(0.9)';
+                    setTimeout(() => {
+                        videoOverlay.style.display = 'none';
+                    }, 1000);
+                }, 6000); // 6 seconds
+
+                // Mute video after 30 seconds (video continues playing but without sound)
+                setTimeout(() => {
+                    birthdayVideo.muted = true;
+                }, 30000); // 30 seconds
+            }, 1200);
+        }, 15000); // 15 seconds
+    </script>
+</body>
+</html>
